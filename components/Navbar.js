@@ -9,16 +9,16 @@ const Navbar = () => {
       <Link href="/">
         <a>Главная</a>
       </Link>
-      <Link href="/categories/souvenirs">
+      <Link href="/souvenirs">
         <a>Сувениры с фото</a>
       </Link>
-      <Link href="/categories/print">
+      <Link href="/print">
         <a>Фото печать</a>
       </Link>
-      <Link href="/categories/cloth">
+      <Link href="/cloth">
         <a>Печать на одежде</a>
       </Link>
-      <Link href="/categories/products">
+      <Link href="/products">
         <a>Товары</a>
       </Link>
     </nav>
