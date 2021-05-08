@@ -19,10 +19,18 @@ export async function getStaticProps() {
 export default function Cloth({ cloths }) {
   console.log(cloths)
   return (
-    <div>
+    <div className="cloth">
       {cloths.map((cloth) => (
         <ClothCard key={cloth.sys.id} cloth={cloth} />
       ))}
+
+      <style jsx>{`
+        .cloth {
+          display: grid;
+          grid-template-columns: 1fr 1fr 1fr;
+          grid-gap: 20px 60px;
+        }
+      `}</style>
     </div>
   )
 }

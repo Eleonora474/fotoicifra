@@ -19,10 +19,18 @@ export async function getStaticProps() {
 export default function Prints({ prints }) {
   console.log(prints)
   return (
-    <div>
+    <div className="print">
       {prints.map((print) => (
         <PrintCard key={print.sys.id} print={print} />
       ))}
+
+      <style jsx>{`
+        .print {
+          display: grid;
+          grid-template-columns: 1fr 1fr 1fr;
+          grid-gap: 20px 60px;
+        }
+      `}</style>
     </div>
   )
 }

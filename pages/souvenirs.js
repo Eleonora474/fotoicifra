@@ -19,10 +19,18 @@ export async function getStaticProps() {
 export default function Souvenir({ souvenir }) {
   console.log(souvenir)
   return (
-    <div>
+    <div className="souvenirs">
       {souvenir.map((souvenirs) => (
         <SouvenirsCard key={souvenirs.sys.id} souvenirs={souvenirs} />
       ))}
+
+      <style jsx>{`
+        .souvenirs {
+          display: grid;
+          grid-template-columns: 1fr 1fr 1fr;
+          grid-gap: 20px 60px;
+        }
+      `}</style>
     </div>
   )
 }
