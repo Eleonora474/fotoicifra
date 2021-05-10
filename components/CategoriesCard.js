@@ -1,8 +1,8 @@
 import Link from 'next/link'
 import Image from 'next/image'
 
-export default function Card({ cloth }) {
-  const { title, slug, price, thumbnail } = cloth.fields
+export default function Card({ categories }) {
+  const { title, slug, price, thumbnail } = categories.fields
   return (
     <div>
       <div className="">

@@ -1,27 +1,27 @@
 import { createClient } from 'contentful'
-import ClothCard from '../components/ClothCard'
+import CategoriesCard from '../components/CategoriesCard'
 
 export async function getStaticProps() {
-  const cloth = createClient({
+  const categories = createClient({
     space: process.env.CONTENTFUL_SPACE_ID,
     accessToken: process.env.CONTENTFUL_ACCESS_KEY,
   })
 
-  const res = await cloth.getEntries({ content_type: 'cloth' })
+  const res = await categories.getEntries({ content_type: 'categories' })
 
   return {
     props: {
-      cloths: res.items,
+      category: res.items,
     },
   }
 }
 
-export default function Cloth({ cloths }) {
-  console.log(cloths)
+export default function Categories({ categories }) {
+  console.log(categories)
   return (
-    <div className="cloth">
-      {cloths.map((cloth) => (
-        <ClothCard key={cloth.sys.id} cloth={cloth} />
+    <div className="categories">
+      {category.map((categories) => (
+        <CategoriesCard key={categories.sys.id} categories={categories} />
       ))}
 
       <style jsx>{`

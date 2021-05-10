@@ -9,10 +9,10 @@ const Navbar = () => {
       <Link href="/">
         <a>Главная</a>
       </Link>
-      <Link href="/souvenirs">
-        <a>Сувениры с фото</a>
+      <Link href="/categories">
+        <a>Категории</a>
       </Link>
-      <Link href="/print">
+      {/* <Link href="/print">
         <a>Фото печать</a>
       </Link>
       <Link href="/cloth">
@@ -20,7 +20,7 @@ const Navbar = () => {
       </Link>
       <Link href="/products">
         <a>Товары</a>
-      </Link>
+      </Link> */}
     </nav>
   )
 }

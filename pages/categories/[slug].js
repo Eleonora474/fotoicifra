@@ -2,18 +2,18 @@ import { createClient } from 'contentful'
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 import Image from 'next/image'
 
-// cloth pages
-const cloth = createClient({
+// pages
+const contentfulClient = createClient({
   space: process.env.CONTENTFUL_SPACE_ID,
   accessToken: process.env.CONTENTFUL_ACCESS_KEY,
 })
 
 export const getStaticPaths = async () => {
-  const res = await cloth.getEntries({
-    content_type: 'cloth',
+  const categories = await contentfulClient.getEntries({
+    content_type: 'categories',
   })
 
-  const paths = res.items.map((item) => {
+  const paths = categories.items.map((item) => {
     return {
       params: { slug: item.fields.slug },
     }
@@ -26,19 +26,24 @@ export const getStaticPaths = async () => {
 }
 
 export async function getStaticProps({ params }) {
-  const { items } = await cloth.getEntries({
-    content_type: 'cloth',
-    'fields.slug': params.slug,
-  })
+  // console.log('памаигте', params)
+  console.log(JSON.stringify(params, null, 4))
+  // const { items: categories } = await categories.getEntries({
+  //   content_type: 'categories',
+  //   'fields.slug': params.slug,
+  // })
 
   return {
-    props: { cloth: items[0] },
+    props: {
+      /* category: items[0]  */
+    },
   }
 }
 
-export default function Details({ cloth }) {
-  const { featuredImage, title, description, price } = cloth.fields
-  console.log(description)
+export default function Details({ categories }) {
+  const { featuredImage, title, description, price } = categories.fields
+
+  console.log(categories)
   return (
     <div>
       <div className="">
@@ -63,5 +68,3 @@ export default function Details({ cloth }) {
     </div>
   )
 }
-
-//souvenirs
