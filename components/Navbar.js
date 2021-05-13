@@ -1,27 +1,38 @@
-import Link from 'next/link'
+import { Image } from 'semantic-ui-react'
+import { Menu, Header } from 'semantic-ui-react'
+import { useRouter } from 'next/router'
 
 const Navbar = () => {
+  const router = useRouter()
+
+  function handleItemClick(e, { href }) {
+    e.preventDefault()
+    router.push(href)
+  }
   return (
-    <nav>
-      <div className="logo">
-        <h1>Фото и Цифра</h1>
-      </div>
-      <Link href="/">
-        <a>Главная</a>
-      </Link>
-      <Link href="/categories">
-        <a>Категории</a>
-      </Link>
-      {/* <Link href="/print">
-        <a>Фото печать</a>
-      </Link>
-      <Link href="/cloth">
-        <a>Печать на одежде</a>
-      </Link>
-      <Link href="/products">
-        <a>Товары</a>
-      </Link> */}
-    </nav>
+    <Menu stackable>
+      <Menu.Item href="/" onClick={handleItemClick}>
+        <Image avatar src={'/logo.jpeg'} />
+        <Header as="h1" className="logo">
+          Фото и Цифра
+        </Header>
+      </Menu.Item>
+
+      <Menu.Item href="/categories/suveniry" onClick={handleItemClick}>
+        Сувениры с фото
+      </Menu.Item>
+
+      <Menu.Item href="/categories/foto-pechat" onClick={handleItemClick}>
+        Фото печать
+      </Menu.Item>
+
+      <Menu.Item href="/categories/pechat-na-odezhde" onClick={handleItemClick}>
+        Печать на одежде
+      </Menu.Item>
+      <Menu.Item href="/categories/tovary" onClick={handleItemClick}>
+        Товары
+      </Menu.Item>
+    </Menu>
   )
 }
 

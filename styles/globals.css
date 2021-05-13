@@ -3,28 +3,6 @@ body {
   color: #010101;
 }
 
-nav {
-  margin: 10px auto 80px;
-  padding: 10px 0;
-  display: flex;
-  justify-content: flex-end;
-  align-items: flex-end;
-  border-bottom: 1px solid #0000ffd0;
-}
-nav a {
-  margin-left: 12px;
-}
-nav .logo {
-  margin-right: auto;
-}
-footer {
-  display: block;
-  text-align: center;
-  padding: 30px 0;
-  margin-top: 60px;
-  color: #010101;
-  border-top: 1px solid #0000ffd0;
-}
 .not-found {
   text-align: left;
   margin-left: 20px;
@@ -33,4 +11,40 @@ footer {
 .not-found a {
   color: #4979ff;
   text-decoration: underline;
+}
+.logo {
+  margin: 0 !important;
+  margin-left: 0.5em !important;
+}
+
+/* Carusel */
+.carusel {
+  display: block;
+  justify-content: center;
+  position: relative;
+}
+.carusel img {
+  width: 100% !important;
+}
+.carusel button {
+  text-align: center !important;
+  top: 0;
+  bottom: 0;
+  z-index: 1;
+  opacity: 0.8 !important;
+  border-radius: 0;
+  position: absolute;
+}
+.carusel__left {
+  left: 0;
+}
+
+.carusel__right {
+  right: 0;
+}
+/* layout */
+.layout {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  min-height: 100vh;
 }
