@@ -1,17 +1,14 @@
-
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 import Price from '../../components/Price'
 import createContentfulClient from '../../utils/createContentfulClient'
 import Carusel from '../../components/Carusel'
-import { Grid, Card, Button } from 'semantic-ui-react'
+import { Grid, Card, Button, Modal, Form } from 'semantic-ui-react'
 import { useState } from 'react'
 
 const client = createContentfulClient()
 
-
-
 export default function Product({ product }) {
-  const { description, title, images, price, penny } = product.fields
+  const { description, title, images, price, penny, isImagesInOrder} = product.fields
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [loading, setLoading] = useState(false)
   const [form, setForm] = useState({
@@ -44,7 +41,6 @@ export default function Product({ product }) {
     setForm(prevForm => ({ ...prevForm, images: e.target.files }))
   }
   function makeOffer(e) {
-    e.preventDefault()
     async function send() {
       const formData = new FormData()
       for (let i = 0; i < form.images.length; i++) {
@@ -65,7 +61,6 @@ export default function Product({ product }) {
         console.log(e)
       } finally {
         closeModal()
-
       }
     }
     send()
@@ -93,63 +88,65 @@ export default function Product({ product }) {
           </Card>
         </Grid.Column>
       </Grid>
-      {isModalOpen && (
-        <form onSubmit={makeOffer}>
-          <input
-            onChange={onFilesChange}
-            required
-            type='file'
-            name='images'
-            multiple
-            accept='image/*'
-          />
-          <input
-            onChange={onFormChange}
-            required
-            type='email'
-            name='client'
-            placeholder='Ваш email'
-            value={form.client}
-          />
-          <input
-            onChange={onFormChange}
-            required
-            type='text'
-            name='phone'
-            placeholder='Ваш номер телефона'
-            value={form.phone}
-          />
-          <input
-            onChange={onFormChange}
-            required
-            type='text'
-            name='name'
-            placeholder='Ваше имя'
-            value={form.name}
-          />
-          <input
-            onChange={onFormChange}
-            required
-            type='text'
-            name='text'
-            placeholder='Ваш комментарий'
-            value={form.text}
-          />
-          <input
-            onChange={onFormChange}
-            type='text'
-            name='product'
-            value={form.product}
-            hidden
-          />
-          <button type='submit' disabled={loading}>
-            {loading ? 'Отпраляется...' : 'Отправить'}
-          </button>
-          <button type='button' onClick={closeModal} disabled={loading}>
-            Отменить
-          </button>
-        </form>
-      )}
+
+      <Modal open={isModalOpen} onClose={closeModal}>
+        <Modal.Header>Оформление заказа</Modal.Header>
+        <Modal.Content>
+          <Form loading={loading} onSubmit={makeOffer}>
+            {isImagesInOrder && (<Form.Input
+              onChange={onFilesChange}
+              required
+              type='file'
+              label='Ваши изображения'
+              name='images'
+              multiple
+              accept='image/*'
+            />)}
+            <Form.Input
+              onChange={onFormChange}
+              required
+              type='email'
+              name='client'
+              label='Введите Ваш email'
+              placeholder='Ваш email'
+              value={form.client}
+            />
+            <Form.Input
+              onChange={onFormChange}
+              required
+              type='text'
+              name='phone'
+              label='Ваш Введите номер телефона'
+              placeholder='Ваш номер телефона'
+              value={form.phone}
+            />
+            <Form.Input
+              onChange={onFormChange}
+              required
+              type='text'
+              name='name'
+              label='Введите Ваше имя'
+              placeholder='Ваше имя'
+              value={form.name}
+            />
+            <Form.Input
+              onChange={onFormChange}
+              required
+              type='text'
+              name='text'
+              label='Введите Ваш комментарий'
+              placeholder='Ваш комментарий'
+              value={form.text}
+            />
+            <Button onClick={closeModal} disabled={loading} basic color='grey'>
+              Отменить
+            </Button>
+            <Button disabled={loading} type='submit' color='orange'>
+              {loading ? 'Отпраляется...' : 'Отправить'}
+            </Button>
+          </Form>
+        </Modal.Content>
+      </Modal>
     </>
   )
 }

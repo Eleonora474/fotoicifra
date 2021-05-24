@@ -10,13 +10,13 @@ export async function getStaticProps() {
   })
 
   return {
-    props: { about: items[0].fields.about },
+    props: { about: items[0]?.fields.about || false },
   }
 }
 export default function Home({ about }) {
   return (
     <div>
-      {documentToReactComponents(about, {
+      {about && documentToReactComponents(about, {
         renderNode: {
           'embedded-asset-block': (node) => (
             <div style={{ maxWidth: '300px' }}>
