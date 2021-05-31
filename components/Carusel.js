@@ -16,7 +16,7 @@ export default function Carusel({ images }) {
   return (
     <div className='carusel'>
       <Button
-        className='carusel__left'
+        className='carusel__left circular'
         onClick={goLeft}
         disabled={!activeImageIndex}
       >
@@ -27,7 +27,7 @@ export default function Carusel({ images }) {
         size='medium'
       />
       <Button
-        className='carusel__right'
+        className='carusel__right circular'
         onClick={goRight}
         disabled={activeImageIndex === images.length - 1}
       >
@@ -76,4 +76,6 @@ color='current-color'
     </svg>
   )
 }
+
+
 
