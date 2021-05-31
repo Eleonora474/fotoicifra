@@ -28,8 +28,7 @@ body {
 }
 .carusel button {
   text-align: center !important;
-  top: 0;
-  bottom: 0;
+  top: 45%;
   z-index: 1;
   opacity: 0.8 !important;
   border-radius: 0;
