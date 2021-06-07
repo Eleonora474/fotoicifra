@@ -5,23 +5,23 @@ import { Email, Vk, Phone, Telegram, Viber, Whatsapp } from './Icons'
 const Footer = () => {
   return (
     <List horizontal style={{ textAlign: 'center', marginTop: '1rem' }}>
-      <List.Item href='#'>
+      <List.Item href='https://api.whatsapp.com/send?phone=+79536027027&text=' target="_blank">
         <Whatsapp />
       </List.Item>
-      <List.Item href='#'>
+      <List.Item href='print@fotoicifra.ru' target="_blank">
         <Email />
       </List.Item>
-      <List.Item href='#'>
+      <List.Item href='https://vk.com/printfotoicifra_1' target="_blank">
         <Vk />
       </List.Item>
 
-      <List.Item href='#'>
+      <List.Item href='https://t.me/TerritoriyaFoto' target="_blank">
         <Telegram />
       </List.Item>
-      <List.Item href='#'>
+      <List.Item href='viber://chat?number=%2B89536027027' target="_blank">
         <Viber />
       </List.Item>
-      <List.Item href='#'>
+      <List.Item href='tel:+79536027027'>
         <Phone />
       </List.Item>
     </List>
