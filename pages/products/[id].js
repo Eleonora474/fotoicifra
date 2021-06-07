@@ -116,7 +116,7 @@ export default function Product({ product }) {
               required
               type='text'
               name='phone'
-              label='Ваш Введите номер телефона'
+              label='Введите Ваш номер телефона'
               placeholder='Ваш номер телефона'
               value={form.phone}
             />
