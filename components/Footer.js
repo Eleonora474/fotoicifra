@@ -18,7 +18,7 @@ const Footer = () => {
       <List.Item href='https://t.me/TerritoriyaFoto' target="_blank">
         <Telegram />
       </List.Item>
-      <List.Item href='viber://chat?number=%2B79536027027' target="_blank">
+      <List.Item href='#'>
         <Viber />
       </List.Item>
       <List.Item href='tel:+79536027027'>
