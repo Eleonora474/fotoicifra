@@ -8,7 +8,7 @@ const Footer = () => {
       <List.Item href='https://api.whatsapp.com/send?phone=+79536027027&text=' target="_blank">
         <Whatsapp />
       </List.Item>
-      <List.Item href='print@fotoicifra.ru' target="_blank">
+      <List.Item href='mailto:print@fotoicifra.ru' target="_blank">
         <Email />
       </List.Item>
       <List.Item href='https://vk.com/printfotoicifra_1' target="_blank">
