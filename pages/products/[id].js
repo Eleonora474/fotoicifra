@@ -2,7 +2,7 @@ import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 import Price from '../../components/Price'
 import createContentfulClient from '../../utils/createContentfulClient'
 import Carusel from '../../components/Carusel'
-import { Grid, Card, Button, Modal, Form } from 'semantic-ui-react'
+import { Grid, Card, Button, Modal, Form, TextArea } from 'semantic-ui-react'
 import { useState } from 'react'
 
 const client = createContentfulClient()
@@ -93,15 +93,17 @@ export default function Product({ product }) {
         <Modal.Header>Оформление заказа</Modal.Header>
         <Modal.Content>
           <Form loading={loading} onSubmit={makeOffer}>
-            {isImagesInOrder && (<Form.Input
-              onChange={onFilesChange}
-              required
-              type='file'
-              label='Ваши изображения'
-              name='images'
-              multiple
-              accept='image/*'
-            />)}
+            {isImagesInOrder && (
+              <Form.Input
+                onChange={onFilesChange}
+                required
+                type='file'
+                label='Ваши изображения'
+                name='images'
+                multiple
+                accept='image/*'
+              />
+            )}
             <Form.Input
               onChange={onFormChange}
               required
@@ -129,7 +131,7 @@ export default function Product({ product }) {
               placeholder='Ваше имя'
               value={form.name}
             />
-            <Form.Input
+            <TextArea
               onChange={onFormChange}
               required
               type='text'
@@ -138,7 +140,13 @@ export default function Product({ product }) {
               placeholder='Ваш комментарий'
               value={form.text}
             />
-            <Button onClick={closeModal} disabled={loading} basic color='grey'>
+            <Button
+              style={{ marginTop: '1em' }}
+              onClick={closeModal}
+              disabled={loading}
+              basic
+              color='grey'
+            >
               Отменить
             </Button>
             <Button disabled={loading} type='submit' color='orange'>
